@@ -1,16 +1,50 @@
-# Tray Notepad
+# Traynote
 
-Простое приложение-блокнот для Ubuntu с иконкой в системном трее.
+[![traynote](https://snapcraft.io/traynote/badge.svg)](https://snapcraft.io/traynote)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Возможности
-- Иконка в системном трее
-- Быстрое открытие/закрытие блокнота кликом по иконке
-- Автосохранение заметок
-- Бежевый бумажный фон
-- Увеличенный скроллбар при наведении
-- Закрытие по Escape или клику вне окна
+**Quick temporary notepad in system tray for instant notes on the fly.**
 
-## Установка
-sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-4.0 gir1.2-ayatanaappindicator3-0.1
-chmod +x src/main.py
-./src/main.py
+> **IMPORTANT:** This is NOT a regular notepad. Traynote does NOT save data after closing. Each instance is a temporary session that lives only while its tray icon exists.
+
+## Install
+
+From Snap Store (recommended):
+
+    sudo snap install traynote
+
+Or search for **Traynote** in Ubuntu Software Center.
+
+## How it works
+
+- **Single left-click** on the tray icon - notepad opens instantly
+- **Click on any other window** - notepad collapses to tray, keeping the text for the current session
+- **Launch multiple Traynote instances** - each one is independent with its own notes
+- **Right-click the tray icon -> Quit** - notepad closes permanently and all its data is discarded
+
+Perfect for quick scratch notes, copying text between windows, and fast reminders - without opening heavy apps.
+
+## Features
+
+- Instant access from system tray
+- Beige "paper" background
+- Ctrl+Z / Ctrl+Y (works with any keyboard layout)
+- Word wrap
+- Strict confinement - no network, no telemetry
+- English UI
+
+## Requirements
+
+- Ubuntu 22.04 or newer (or any distro with snapd)
+- GTK 3 (bundled inside the snap)
+
+## Build from source
+
+    git clone https://github.com/watereverywhere/tray-notepad.git
+    cd tray-notepad
+    snapcraft clean && snapcraft
+    sudo snap install traynote_*.snap --dangerous
+
+## License
+
+MIT (c) 2026 dss
