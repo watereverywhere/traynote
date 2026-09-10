@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Traynote
+Comment=Quick temporary notepad in system tray
+Exec=traynote
+Icon=${SNAP}/icon.png
+Terminal=false
+Type=Application
+Categories=Utility;TextEditor;
+StartupWMClass=traynote

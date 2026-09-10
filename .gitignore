@@ -1,0 +1,21 @@
+# Сборочные артефакты
+*.snap
+*.flatpak
+build-dir/
+export/
+.flatpak-builder/
+parts/
+prime/
+stage/
+overlay/
+
+# Python
+__pycache__/
+*.pyc
+
+# Черновики
+demo_ready.mp4
+flathub-fork/
+
+# Лишние копии
+main.py

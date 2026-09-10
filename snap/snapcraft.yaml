@@ -1,0 +1,61 @@
+name: traynote
+base: core22
+version: '1.0.15'
+summary: Quick temporary notepad in system tray
+title: Traynote
+contact: didenkoserj2009@gmail.com
+license: MIT
+description: |
+  Quick temporary notepad in system tray for instant notes on the fly.
+
+  IMPORTANT: This is NOT a regular notepad. Traynote does NOT save data
+  after closing. Each instance is a temporary session that lives only
+  while its tray icon exists.
+
+  How it works:
+  • Single left-click on the tray icon — notepad opens instantly
+  • Click on any other window — notepad collapses to tray, keeping
+    the text for the current session
+  • Launch multiple Traynote instances — each one is independent
+    with its own notes
+  • Right-click the tray icon → Quit — notepad closes permanently
+    and all its data is discarded
+
+  Perfect for quick scratch notes, copying text between windows,
+  and fast reminders — without opening heavy apps.
+
+  If you need a persistent notepad with saving — this is not Traynote.
+
+grade: stable
+confinement: strict
+
+apps:
+  traynote:
+    command: main.py
+    plugs: [home, x11, wayland]
+    environment:
+      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages
+      GI_TYPELIB_PATH: $SNAP/usr/lib/x86_64-linux-gnu/girepository-1.0
+      GDK_PIXBUF_MODULE_FILE: $SNAP/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache
+      XDG_DATA_DIRS: $SNAP/usr/share:$SNAP/usr/share/icons:$XDG_DATA_DIRS
+
+parts:
+  traynote:
+    plugin: dump
+    source: src/
+    stage-packages:
+      - python3
+      - python3-gi
+      - gir1.2-gtk-3.0
+      - gir1.2-gtksource-3.0
+      - adwaita-icon-theme
+      - hicolor-icon-theme
+      - shared-mime-info
+      - libgdk-pixbuf-2.0-0
+      - libgdk-pixbuf2.0-common
+      - librsvg2-common
+  loaders:
+    plugin: dump
+    source: snap/local/
+    organize:
+      loaders.cache: usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache

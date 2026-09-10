@@ -23,7 +23,22 @@ scroll.add(view)
 win.add(scroll)
 
 icon = Gtk.StatusIcon()
-icon.set_from_icon_name("accessories-text-editor")
+from gi.repository import GdkPixbuf
+size = 22
+pixels = bytearray()
+for y in range(size):
+    for x in range(size):
+        if x == 0 or y == 0 or x == size-1 or y == size-1:
+            pixels.extend([80, 60, 40, 255])
+        elif y == 3:
+            pixels.extend([180, 50, 50, 255])
+        elif y in (7, 11, 15, 19) and 3 < x < size-3:
+            pixels.extend([150, 150, 180, 255])
+        else:
+            pixels.extend([245, 245, 220, 255])
+pixbuf = GdkPixbuf.Pixbuf.new_from_data(
+    bytes(pixels), GdkPixbuf.Colorspace.RGB, True, 8, size, size, size*4)
+icon.set_from_pixbuf(pixbuf)
 icon.set_visible(True)
 
 is_visible = False
@@ -84,6 +99,19 @@ def on_key(widget, event):
     return False
 
 icon.connect("activate", toggle)
+
+def on_popup_menu(icon, button, activate_time):
+    menu = Gtk.Menu()
+    quit_item = Gtk.MenuItem(label="Выход")
+    quit_item.connect("activate", quit_app)
+    menu.append(quit_item)
+    menu.show_all()
+    menu.popup(None, None, None, None, button, activate_time)
+
+def quit_app(*args):
+    Gtk.main_quit()
+
+icon.connect("popup-menu", on_popup_menu)
 win.connect("focus-out-event", on_focus_out)
 view.connect("key-press-event", on_key)
 
