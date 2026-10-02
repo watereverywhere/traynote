@@ -1,12 +1,12 @@
-app-id: org.traynotepad.TrayNotepad
+app-id: io.github.watereverywhere.TrayNotepad
 runtime: org.gnome.Platform
 runtime-version: '50'
 sdk: org.gnome.Sdk
 command: main.py
 finish-args:
   - --socket=x11
-  - --socket=wayland
-  - --filesystem=home
+  - --share=ipc
+  - --filesystem=~/.local/share/tray-notepad:create
 modules:
   - name: tray-notepad
     buildsystem: simple

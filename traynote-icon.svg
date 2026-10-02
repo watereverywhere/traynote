@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Тень -->
+  <rect x="76" y="46" width="360" height="440" rx="12" fill="#00000022"/>
+  <!-- Основной блокнот -->
+  <rect x="56" y="26" width="360" height="440" rx="12" fill="#F5F5DC" stroke="#503C28" stroke-width="12"/>
+  <!-- Красная полоса-переплёт -->
+  <rect x="56" y="76" width="360" height="20" fill="#B43232"/>
+  <!-- Синие линии-строки -->
+  <rect x="96" y="146" width="280" height="10" rx="5" fill="#9696B4"/>
+  <rect x="96" y="206" width="280" height="10" rx="5" fill="#9696B4"/>
+  <rect x="96" y="266" width="280" height="10" rx="5" fill="#9696B4"/>
+  <rect x="96" y="326" width="280" height="10" rx="5" fill="#9696B4"/>
+  <rect x="96" y="386" width="200" height="10" rx="5" fill="#9696B4"/>
+</svg>
